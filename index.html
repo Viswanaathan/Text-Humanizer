@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Humanizer - Make AI Text Sound Human</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="main-title">
+                <i class="fas fa-magic"></i>
+                Text Humanizer
+            </h1>
+            <p class="subtitle">Transform AI-generated text into natural, human-sounding writing</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Input Section -->
+            <section class="input-section glass-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-keyboard"></i> Input Text</h2>
+                    <div class="word-count">
+                        <span id="input-count">0</span> words
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <textarea 
+                        id="input-text" 
+                        placeholder="Paste your AI-generated or formal text here... 
+Example: 'The utilization of innovative methodologies facilitates the optimization of operational efficiencies and enhances productivity metrics across organizational paradigms.'"
+                        class="text-input"
+                    ></textarea>
+                </div>
+
+                <!-- Humanization Options -->
+                <div class="options-section">
+                    <h3><i class="fas fa-sliders-h"></i> Humanization Style</h3>
+                    <div class="options-grid">
+                        <div class="option-item">
+                            <input type="radio" id="style-casual" name="humanize-style" value="casual" checked>
+                            <label for="style-casual">
+                                <i class="fas fa-t-shirt"></i>
+                                <span>Casual Conversation</span>
+                                <small>Everyday, informal language</small>
+                            </label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="style-professional" name="humanize-style" value="professional">
+                            <label for="style-professional">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Professional</span>
+                                <small>Business casual tone</small>
+                            </label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="style-creative" name="humanize-style" value="creative">
+                            <label for="style-creative">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Creative Writing</span>
+                                <small>Expressive and engaging</small>
+                            </label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="style-simple" name="humanize-style" value="simple">
+                            <label for="style-simple">
+                                <i class="fas fa-language"></i>
+                                <span>Simple & Clear</span>
+                                <small>Easy to understand</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="humanize-btn" class="btn btn-primary">
+                        <i class="fas fa-robot"></i>
+                        Humanize Text
+                    </button>
+                    <button id="clear-btn" class="btn btn-secondary">
+                        <i class="fas fa-broom"></i>
+                        Clear All
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="results-section glass-card hidden">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-check"></i> Humanized Text</h2>
+                    <div class="word-count">
+                        <span id="output-count">0</span> words
+                        <span class="improvement" id="improvement-score"></span>
+                    </div>
+                </div>
+
+                <div class="result-content">
+                    <div class="result-text" id="output-text">
+                        Your humanized text will appear here...
+                    </div>
+
+                    <!-- Text Analysis -->
+                    <div class="analysis-section">
+                        <h3><i class="fas fa-chart-bar"></i> Text Analysis</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" id="readability-score">-</div>
+                                <div class="metric-label">Readability</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="naturalness-score">-</div>
+                                <div class="metric-label">Naturalness</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="engagement-score">-</div>
+                                <div class="metric-label">Engagement</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="complexity-score">-</div>
+                                <div class="metric-label">Simplicity</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="result-actions">
+                        <button id="copy-btn" class="btn btn-success">
+                            <i class="fas fa-copy"></i>
+                            Copy Text
+                        </button>
+                        <button id="download-btn" class="btn btn-info">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button id="new-humanize" class="btn btn-primary">
+                            <i class="fas fa-sync"></i>
+                            Humanize Again
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2>Why Humanize Your Text?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-user-friends"></i>
+                        <h3>Sound More Authentic</h3>
+                        <p>Convert robotic AI text into natural human conversation that builds trust with your audience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Increase Engagement</h3>
+                        <p>Human-like writing gets 47% more engagement and better reader retention.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Bypass AI Detection</h3>
+                        <p>Make AI-generated content undetectable by modern AI detection tools.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Save Time</h3>
+                        <p>No more manual editing - instantly transform formal text into natural writing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section glass-card">
+                <h2><i class="fas fa-lightbulb"></i> Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="example-before">
+                            <strong>AI-Generated:</strong>
+                            <p>"The utilization of innovative methodologies facilitates the optimization of operational efficiencies."</p>
+                        </div>
+                        <div class="example-after">
+                            <strong>Humanized:</strong>
+                            <p>"Using new approaches helps us work more efficiently and get better results."</p>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-before">
+                            <strong>AI-Generated:</strong>
+                            <p>"It is imperative that we leverage synergistic partnerships to maximize ROI."</p>
+                        </div>
+                        <div class="example-after">
+                            <strong>Humanized:</strong>
+                            <p>"We need to work together with our partners to get the best return on our investment."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Text Humanizer. Making AI text sound human, one word at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
